@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/ebadfd/local-vault/pkg/project"
 	"github.com/spf13/cobra"
 )
@@ -43,10 +41,9 @@ func (o *projectCommand) run(cmd *cobra.Command, args []string) error {
 
 		return err
 	} else {
-		fmt.Println("list all projects")
+		err := project.ListProjects()
+		return err
 	}
-
-	return nil
 }
 
 func (c *projectCommand) Name() string {

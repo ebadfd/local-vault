@@ -75,7 +75,6 @@ func getEncryptedFile(db *sql.DB, projectId int, appName, env string) (string, e
 
 func decrypt(encrypted_file, file string, config config.Config) error {
 	cmd := exec.Command("gpg", "--yes", "--decrypt", "--output", file, "--recipient", *config.Recipient, encrypted_file)
-	fmt.Println(cmd)
 
 	err := cmd.Run()
 	if err != nil {
