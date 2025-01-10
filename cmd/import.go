@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	importenv "github.com/ebadfd/local-vault/pkg/import_env"
 	"github.com/go-playground/validator/v10"
 	"github.com/spf13/cobra"
 )
@@ -67,8 +68,11 @@ func (o *importCommand) run(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("validation failed: %d errors found", len(err.(validator.ValidationErrors)))
 	}
 
-	fmt.Println(file)
-	fmt.Println(o)
+	err = importenv.CreateImport(o.Project, o.App, o.Env, file)
+
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

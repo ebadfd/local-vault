@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	dumpenv "github.com/ebadfd/local-vault/pkg/dump_env"
 	"github.com/go-playground/validator/v10"
 	"github.com/spf13/cobra"
 )
@@ -67,8 +68,11 @@ func (o *dumpCommand) run(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("validation failed: %d errors found", len(err.(validator.ValidationErrors)))
 	}
 
-	fmt.Println(file)
-	fmt.Println(o)
+	err = dumpenv.CreateDump(o.Project, o.App, o.Env, file)
+
+	if err != nil {
+		return err
+	}
 
 	return nil
 }

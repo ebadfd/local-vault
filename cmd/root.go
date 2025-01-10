@@ -28,6 +28,9 @@ It supports importing and exporting environment variables for projects and appli
 
 	cmd.AddCommand(newImportCommand())
 	cmd.AddCommand(newDumpCommand())
+	cmd.AddCommand(newProjectCommand())
+	cmd.AddCommand(newConfigCommand())
+	cmd.AddCommand(newInitCommand())
 
 	return cmd
 }
