@@ -1,4 +1,4 @@
-# Local Vault - CLI Tool for Storing and Managing Encrypted Environment Variables
+# Local Vault 
 
 Local Vault is a command-line tool designed to securely store and manage sensitive environment variables and files. Using GPG encryption under the hood, 
 it allows you to encrypt your sensitive data and access it when needed. This tool is ideal for managing environment variables across multiple projects, 
